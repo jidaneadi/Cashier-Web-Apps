@@ -1,6 +1,11 @@
 <template>
   <div>
     <v-data-table :headers="headers" :items="dataProduk">
+      <template v-slot:item.jns_produk="{ item }">
+          <v-chip :color="getColor(item.jns_produk)" dark>
+            {{ item.jns_produk }}
+          </v-chip>
+        </template>
       <template v-slot:top>
         <v-toolbar flat>
           <v-toolbar-title>Data Produk</v-toolbar-title>
@@ -208,6 +213,19 @@ export default {
   },
 
   methods: {
+    getColor(jns_produk) {
+      if (jns_produk === "paket crispy") return 'blue'
+      else if (jns_produk === "paket penyetan") return 'brown'
+      else if (jns_produk === "saus spesial") return 'red'
+      else if (jns_produk === "mie pedas") return 'deep-orange'
+      else if (jns_produk === "menu satuan") return 'amber'
+      else if (jns_produk === "menu sayur") return 'green'
+      else if (jns_produk === "minuman varian rasa") return 'lime'
+      else if (jns_produk === "menu lain-lain") return 'indigo'
+      else if (jns_produk === "minuman") return 'cyan'
+      else return 'red'
+    },
+
     reload() {
       window.location.href = '/dataproduk';
     },

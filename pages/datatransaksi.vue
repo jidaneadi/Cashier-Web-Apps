@@ -1,10 +1,11 @@
 <template>
-  <div>
-    Data Transaksi
-  </div>
+  <TableDataTransaksi/>
 </template>
 <script>
+import TableDataTransaksi from '../components/DataTransaksiComponents/Table/TableDataTransaksi.vue';
+
 export default {
-  middleware: ['auth'],
+    middleware: ["auth"],
+    components: { TableDataTransaksi }
 }
 </script>
