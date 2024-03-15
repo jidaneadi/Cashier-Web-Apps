@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pa-6">
     <TableDataProduk />
   </div>
 </template>

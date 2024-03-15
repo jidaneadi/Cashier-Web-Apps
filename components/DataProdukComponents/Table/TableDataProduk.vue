@@ -1,17 +1,18 @@
 <template>
   <div>
-    <v-data-table :headers="headers" :items="dataProduk">
+    <v-data-table :headers="headers" :items="dataProduk" :search="search">
       <template v-slot:item.jns_produk="{ item }">
-          <v-chip :color="getColor(item.jns_produk)" dark>
-            {{ item.jns_produk }}
-          </v-chip>
-        </template>
+        <v-chip :color="getColor(item.jns_produk)" dark>
+          {{ item.jns_produk }}
+        </v-chip>
+      </template>
       <template v-slot:top>
         <v-toolbar flat>
           <v-toolbar-title>Data Produk</v-toolbar-title>
           <v-divider class="mx-4" inset vertical></v-divider>
           <v-spacer></v-spacer>
-
+          <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" filled dense rounded />
+          <v-spacer></v-spacer>
           <!-- Dialog Add -->
           <v-dialog v-model="dialog" max-width="500px">
             <template v-slot:activator="{ on, attrs }">
@@ -31,7 +32,8 @@
                         label="Nama Produk"></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="6">
-                      <v-text-field v-model="editedItem.harga" :rules="rules.harga" prefix="Rp." label="Harga"></v-text-field>
+                      <v-text-field v-model="editedItem.harga" :rules="rules.harga" prefix="Rp."
+                        label="Harga"></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="6">
                       <v-combobox v-model="editedItem.jns_produk" :rules="rules.jns_produk" label="Jenis Produk"
@@ -148,6 +150,7 @@
 export default {
   data() {
     return {
+      search:'',
       dialog: false,
       dialogEdit: false,
       dialogDelete: false,

@@ -1,14 +1,21 @@
 <template>
   <div>
-    <v-data-table :headers="headers" :items="dataKaryawan">
+    <v-data-table :headers="headers" :items="dataKaryawan" :search="search">
+      <template v-slot:item.status="{ item }">
+        <v-chip :color="getColor(item.status)" dark>
+          {{ item.status }}
+        </v-chip>
+      </template>
       <template v-slot:top>
         <v-toolbar flat>
           <v-toolbar-title>Data Karyawan</v-toolbar-title>
           <v-divider class="mx-4" inset vertical></v-divider>
           <v-spacer></v-spacer>
+          <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" filled dense rounded />
+          <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="500px">
             <template v-slot:activator="{ on, attrs }">
-              <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on">
+              <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on" large>
                 Add
               </v-btn>
             </template>
@@ -35,7 +42,7 @@
                       <v-text-field v-model="editedItem.alamat" label="Alamat"></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="6">
-                <v-combobox v-model="editedItem.status" label="Status" :items="items"/>
+                      <v-combobox v-model="editedItem.status" label="Status" :items="items" />
                     </v-col>
                   </v-row>
                 </v-container>
@@ -92,7 +99,7 @@
                 <v-text-field v-model="editedItem.alamat" label="Alamat"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="6">
-                <v-combobox v-model="editedItem.status" label="Status" :items="items"/>
+                <v-combobox v-model="editedItem.status" label="Status" :items="items" />
               </v-col>
             </v-row>
           </v-container>
@@ -144,12 +151,13 @@
 </template>
 <script>
 export default {
-  data: () => ({
+  data: ()  => ({
+    search:'',
     dialog: false,
     dialogEdit: false,
     dialogDelete: false,
-    dialogBerhasil:false,
-    items:['aktif', 'tidak aktif'],
+    dialogBerhasil: false,
+    items: ['aktif', 'tidak aktif'],
     headers: [
       {
         text: 'ID',
@@ -172,7 +180,7 @@ export default {
       id_user: '',
       nama: '',
       email: '',
-      role:'karyawan',
+      role: 'karyawan',
       password: '',
       no_hp: '',
       alamat: '',
@@ -183,7 +191,7 @@ export default {
       id_user: '',
       nama: '',
       email: '',
-      role:'karyawan',
+      role: 'karyawan',
       password: '',
       no_hp: '',
       alamat: '',
@@ -211,6 +219,11 @@ export default {
   },
 
   methods: {
+    getColor(status) {
+      if (status === "aktif") return 'green'
+      else if (status === "tidak aktif") return 'red'
+      else return 'gray'
+    },
     reload() {
       window.location.href = '/datakaryawan';
     },
