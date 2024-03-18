@@ -34,7 +34,7 @@
     </v-navigation-drawer>
     <v-app-bar fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>Hanacik</v-toolbar-title>
+      <v-toolbar-title class="text-body-1 black--text">HANACIK</v-toolbar-title>
       <v-spacer />
     </v-app-bar>
     <v-main>
