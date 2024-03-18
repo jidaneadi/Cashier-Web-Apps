@@ -27,6 +27,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/persistedState.js', mode: 'client'},
+    {src: '~/plugins/fontawesome.js'}
     // { src: '~/plugins/axiosintercept.js', mode: 'client'},
   ],
 
