@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <v-img src="img/bg-food.jpg" max-width="auto" max-height="633px">
+      <v-img src="img/bg-food.jpg" max-width="auto" max-height="auto">
         <v-container fill-height>
           <Nuxt />
         </v-container>

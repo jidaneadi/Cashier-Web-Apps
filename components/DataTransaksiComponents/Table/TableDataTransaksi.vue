@@ -5,7 +5,7 @@
         <v-card>
           <v-card-title class="text-h6 font-weight-bold pb-0">
             <v-icon large>mdi-account-multiple-outline</v-icon>
-            Data User
+            Data Transaksi
             <v-divider class="mx-4" inset vertical></v-divider>
             <v-spacer></v-spacer>
             <div>
