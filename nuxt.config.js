@@ -4,6 +4,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   ssr:false,
   server:{
+    host:'127.0.0.1',
     port:3003,
   },
   head: {
@@ -51,7 +52,7 @@ export default {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     // baseURL: '/',
     prefix: 'http://neraproject.icu',
-    // prefix: 'http://localhost:4011',
+    // prefix: 'http://localhost:4012',
     proxy : true
   },
 
